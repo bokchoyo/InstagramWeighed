@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Instagram-Style DM Summary</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <div class="hero__text">
+        <p class="eyebrow">Offline • Private • Fast</p>
+        <h1>Instagram DM Recap</h1>
+        <p class="lede">
+          Drop your exported inbox folder and your display name to get a quick, offline-only
+          summary of your most active conversations, streaks, and reels shares.
+        </p>
+        <form id="upload-form" class="form">
+          <label class="field">
+            <span>Display name (exactly as it appears in your export)</span>
+            <input type="text" name="displayName" required placeholder="e.g. Brian Choi" />
+          </label>
+          <label class="field file-field">
+            <span>Instagram export inbox folder</span>
+            <input type="file" name="folder" webkitdirectory directory multiple required />
+            <div class="hint">Select the folder named like <code>instagram-&lt;username&gt;-YYYY-MM-DD-XXXX/your_instagram_activity/messages/inbox</code>.</div>
+          </label>
+          <button type="submit" class="cta">Generate summary</button>
+          <p class="status" id="status"></p>
+        </form>
+      </div>
+      <div class="hero__card">
+        <div class="badge">Offline</div>
+        <div class="hero__card-body">
+          <p class="card-title">Privacy first</p>
+          <p>No uploads. Everything runs locally in your browser.</p>
+        </div>
+      </div>
+    </header>
+
+    <section class="results" id="results" hidden>
+      <div class="summary-grid">
+        <article class="summary-card">
+          <p class="label">Total messages</p>
+          <p class="value" id="total-messages">0</p>
+        </article>
+        <article class="summary-card">
+          <p class="label">Sent</p>
+          <p class="value" id="sent-messages">0</p>
+        </article>
+        <article class="summary-card">
+          <p class="label">Received</p>
+          <p class="value" id="received-messages">0</p>
+        </article>
+        <article class="summary-card">
+          <p class="label">Reels shared</p>
+          <p class="value" id="reels-total">0</p>
+        </article>
+        <article class="summary-card">
+          <p class="label">Longest streak</p>
+          <p class="value" id="longest-streak">0 days</p>
+          <p class="subvalue" id="streak-range">N/A</p>
+        </article>
+      </div>
+
+      <div class="panels">
+        <div class="panel">
+          <div class="panel__head">
+            <h2>Top conversations</h2>
+            <p class="panel__hint">Sorted by total messages</p>
+          </div>
+          <div class="table" id="top-threads"></div>
+        </div>
+        <div class="panel">
+          <div class="panel__head">
+            <h2>Top streaks</h2>
+            <p class="panel__hint">Consecutive days you sent messages</p>
+          </div>
+          <div class="table" id="top-streaks"></div>
+        </div>
+        <div class="panel">
+          <div class="panel__head">
+            <h2>Reels shares</h2>
+            <p class="panel__hint">Threads with the most reels</p>
+          </div>
+          <div class="table" id="top-reels"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
